@@ -2,6 +2,7 @@
 In this project, I will create an XGBoost model classifying employee attritions with employee records, and then apply LIME and SHAP to find actionable insights. The data used to build the classifier is provided by the IBM Data Science team, where each record in the data contains feature values of a corresponding employee, and the target variable Attrition indicates whether the employee has left the company (0: still employed, 1: left).
 
 ## Data Description
+
  * Age: Employees' age  
  * Attrition: Whether or not the employee has left, 'Yes' 'No'  
  * BusinessTravel: Frequency of business travel, 'Non-Travel' 'Travel Rarely' 'Travel Frequently'  
@@ -33,9 +34,29 @@ In this project, I will create an XGBoost model classifying employee attritions 
 
 ## XAI
 
+XAI stands for _**Explainable Artificial Intelligence**_. It refers to the development of artificial intelligence (AI) systems and algorithms that can provide human users with understandable explanations for their decisions and actions. Traditional AI models, such as deep learning neural networks, are often considered "black boxes" because they make predictions or take actions without providing clear explanations for how they arrived at those results.
+
+The lack of interpretability and transparency in AI systems can be problematic in various domains where decisions have significant consequences, such as healthcare, finance, and legal systems. XAI aims to address this issue by incorporating interpretability into AI models, allowing users to understand the underlying factors and reasoning behind AI-driven decisions.
+
+There are different approaches to achieving explainability in AI. Some methods include producing feature importance scores to highlight which factors influenced a decision, generating textual or visual explanations to provide a step-by-step rationale, or using simpler and more interpretable models to approximate the behavior of complex AI systems. In this project, I applied two model-agnostic XAI algorithms, LIME and SHAP, to add explainabilities to the classifier.
+
 ### LIME
 
+LIME stands for Local Interpretable Model-agnostic Explanations. It is a technique used in the field of Explainable Artificial Intelligence (XAI) to provide interpretability for machine learning models, particularly in the context of individual predictions.
+
+LIME works by approximating the behavior of a complex machine learning model locally around a specific instance or prediction. It aims to explain how the model's prediction was influenced by the input features. The key idea behind LIME is to create a simpler, interpretable model that can locally mimic the behavior of the complex model.
+
+Here's a simplified overview of how LIME works:
+ 1. Select the instance to be explained: Choose a specific instance or data point for which you want to understand the model's prediction.
+ 2. Perturb the instance: Create slightly modified versions of the instance by perturbing its feature values while keeping the label unchanged. These perturbed instances form a new dataset.
+ 3. Generate interpretable explanations: Train an interpretable model (e.g., linear regression or decision tree) on the perturbed dataset, using the original model's prediction as the target variable. This interpretable model approximates the behavior of the complex model locally.
+
+By following these steps, LIME can provide explanations for individual predictions, indicating which features were most influential in driving the model's decision for a particular instance. These explanations can help users understand the reasoning behind a model's predictions, validate its behavior, identify potential biases or errors, and build trust in the AI system.
+
+LIME is a popular and widely used technique for explainability in various domains and has been applied to different types of machine learning models, including image classifiers, text classifiers, and tabular data models.
+
 ### Shapley Values
+
 Cooperative games are a branch of game theory where players in a game work together to achieve a common goal. In cooperative games, the possible outcomes of collaboration for each combination of members are measured, and then the marginal contribution and Shapley value of each participant are calculated to determine their contributions in actual teamwork. In machine learning, the concepts of marginal contribution and Shapley value can be applied to measure how features affect the results within a model.
 
 For instance, let's consider a "black box" model with three features: x1, x2, and x3. This model performs predictions for each possible combination of features. The marginal contribution and Shapley value of each feature are measured based on the model's prediction results.
